@@ -5,7 +5,7 @@ class Solution {
 private:
     vector<vector<int>> image;
     int newColor;
-    int previousColor;
+    int sourceColor;
     int rows;
     int cols;
 public:
@@ -15,7 +15,7 @@ public:
         if(sr == rows || sc == cols || sr < 0 || sc < 0)
             return;
             
-        if(image[sr][sc] != previousColor)    
+        if(image[sr][sc] != sourceColor)    
             return;
             
         image[sr][sc] = newColor;
@@ -30,7 +30,7 @@ public:
         this->rows = image.size();
         this->cols = image[0].size();
         this->image = image;    
-        this->previousColor = image[sr][sc];
+        this->sourceColor = image[sr][sc];
         this->newColor = newColor;
         fillColor(sr,sc);
         return this->image;
