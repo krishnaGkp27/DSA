@@ -9,7 +9,7 @@ long long  numberOfPaths(int m, int n)
     // Code Here}
     if(m == 1 && n == 1)
         return 1;
-    if(m < 0 || n < 0)
+    if(m < 1 || n < 1)
         return 0;
         
     long long right = numberOfPaths(m,n-1);
