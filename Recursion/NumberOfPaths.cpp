@@ -12,10 +12,10 @@ long long  numberOfPaths(int m, int n)
     if(m < 1 || n < 1)
         return 0;
         
-    long long right = numberOfPaths(m,n-1);
-    long long down = numberOfPaths(m-1,n);
+    long long left = numberOfPaths(m,n-1);
+    long long up = numberOfPaths(m-1,n);
     
-    return right + down;
+    return up + left;
 }
 // { Driver Code Starts.
 
