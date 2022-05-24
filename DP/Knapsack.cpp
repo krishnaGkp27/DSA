@@ -13,10 +13,21 @@ class Solution
        if(n == 0 || W == 0)
         return 0;
         
+       int include;
+       int exclude;
+
        if(wt[n-1] <= W)
-        return max(val[n-1] + knapSack(W-wt[n-1],wt,val,n-1) , knapSack(W,wt,val,n-1));
-    
-       return knapSack(W,wt,val,n-1);    
+       {
+	 include = val[n-1] + knapSack(W-wt[n-1],wt,val,n-1);
+	 exclude = knapSack(W,wt,val,n-1); 
+        
+	 return max(include,exclude); 
+       }
+       else
+       {
+	 exclude= knapSack(W,wt,val,n-1); 
+	 return exclude;
+       }
     }
 };
 
