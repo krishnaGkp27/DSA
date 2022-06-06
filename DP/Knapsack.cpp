@@ -6,23 +6,20 @@ using namespace std;
 class Solution
 {
     public:
-    //Function to return max value that can be put in knapsack of capacity W.
+    #define INF INT_MAX ;
     int knapSack(int W, int wt[], int val[], int n) 
     { 
        // Your code here
-       if(n == 0 || W == 0)
+        if(n == 0 || W == 0)
             return 0;
         
         int include = -INF;
         int exclude = knapSack(W,wt,val,n-1);
         
         if(wt[n-1] <= W)
-        {
             include = val[n-1] + knapSack(W-wt[n-1],wt,val,n-1);
-            return max(include,exclude);
-        }
-        else
-            return exclude;    
+            
+        return max(include,exclude);    
     }
 };
 
