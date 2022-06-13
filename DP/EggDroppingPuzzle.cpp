@@ -3,6 +3,7 @@
 using namespace std;
 
 // } Driver Code Ends
+#define INF 0x3f3f3f3f
 class Solution
 {
 public:
@@ -13,8 +14,8 @@ public:
         // your code here
         int dp[n + 1][k + 1];
 
-        for (int f = 0; f <= k; f++)
-            dp[1][f] = f; // Single egg answer
+        for (int _floor = 0; _floor <= k; _floor++)
+            dp[1][_floor] = _floor; // Single egg answer
 
         for (int egg = 0; egg <= n; egg++)
         {
@@ -24,16 +25,15 @@ public:
 
         for (int egg = 2; egg <= n; egg++)
         {
-            for (int f = 2; f <= k; f++)
+            for (int _floor = 2; _floor <= k; _floor++)
             {
-                int ans = INT_MAX;
-
-                for (int k = 2; k <= f; k++)
+                dp[egg][_floor] = INF;
+                for (int currentFloor = 2; currentFloor <= _floor; currentFloor++)
                 {
-                    int temp = 1 + max(dp[egg - 1][k - 1], dp[egg][f - k]);
-                    ans = min(ans, temp);
+                    int eggBreak = 1 + dp[egg - 1][currentFloor - 1];
+                    int eggSafe = 1 + dp[egg][_floor - currentFloor];
+                    dp[egg][_floor] = min(dp[egg][_floor], max(eggBreak, eggSafe));
                 }
-                dp[egg][f] = ans;
             }
         }
         return dp[n][k];
