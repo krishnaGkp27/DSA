@@ -5,7 +5,7 @@ using namespace std;
 class Solution
 {
 public:
-#define INF INT_MAX;
+#define INF 0x3f3f3f3f;
     int knapSack(int W, int wt[], int val[], int n)
     {
         // Your code here
