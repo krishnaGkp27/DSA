@@ -22,11 +22,11 @@ public:
         for (int i = 1; i <= n; i++)
         {
             long long inclusion = previousSum + arr[i - 1];
-            long long sum = -INF;
+            long long exclusion = -INF;
 
-            sum = max((int)inclusion, arr[i - 1]);
-            previousSum = sum;
-            ans = max(ans, sum);
+            exclusion = max((int)inclusion, arr[i - 1]);
+            previousSum = exclusion;
+            ans = max(ans, exclusion);
         }
         return ans;
     }
