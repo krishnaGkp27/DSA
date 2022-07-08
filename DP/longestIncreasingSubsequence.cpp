@@ -7,14 +7,16 @@ using namespace std;
 class Solution
 {
 public:
+#define INF 0x3f3f3f3f
     // Function to find length of longest increasing subsequence.
+    vector<int> dp;
     int solve(int n, int a[], int pre)
     {
         if (n == 0)
             return 0;
 
-        if (a[n] < a[n - 1])
-            return max(1 + solve(n - 1, a, a[n]), solve(n - 1, a, pre));
+        if (a[n - 1] < pre)
+            return max(1 + solve(n - 1, a, a[n - 1]), solve(n - 1, a, pre));
 
         else
             return solve(n - 1, a, pre);
@@ -22,7 +24,18 @@ public:
     int longestSubsequence(int n, int a[])
     {
         // your code here
-        return solve(n - 1, a, a[n - 1]) - 1;
+        dp.resize(n, 1);
+        int maxSubSeq = 1;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < i; j++)
+                if (a[j] < a[i])
+                    dp[i] = max(dp[i], 1 + dp[j]);
+
+            maxSubSeq = max(maxSubSeq, dp[i]);
+        }
+        return maxSubSeq;
+        // return solve(n,a,INF);
     }
 };
 
