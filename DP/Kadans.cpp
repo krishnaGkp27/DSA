@@ -16,19 +16,19 @@ public:
     // Function to find the sum of contiguous subarray with maximum sum.
     long long maxSubarraySum(int arr[], int n)
     {
-        long long previousSum = 0;
-        long long ans = -INF;
+        long long previousSum = -INF;
+        long long maxSum = -INF;
 
         for (int i = 1; i <= n; i++)
         {
-            long long inclusion = previousSum + arr[i - 1];
-            long long exclusion = -INF;
+            if (previousSum < 0)
+                previousSum = arr[i - 1];
+            else
+                previousSum += arr[i - 1];
 
-            exclusion = max((int)inclusion, arr[i - 1]);
-            previousSum = exclusion;
-            ans = max(ans, exclusion);
+            maxSum = max(maxSum, previousSum);
         }
-        return ans;
+        return maxSum;
     }
 };
 
