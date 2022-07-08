@@ -14,7 +14,7 @@ private:
 
 public:
     // Function to find length of shortest common supersequence of two strings.
-    int lcs(string X, string Y, int m, int n)
+    int scs(string X, string Y, int m, int n)
     {
         if (m == 0)
             return n;
@@ -26,9 +26,9 @@ public:
             return dp[m][n];
 
         if (X[m - 1] == Y[n - 1])
-            return dp[m][n] = 1 + lcs(X, Y, m - 1, n - 1);
+            return dp[m][n] = 1 + scs(X, Y, m - 1, n - 1);
 
-        return dp[m][n] = 1 + min(lcs(X, Y, m - 1, n), lcs(X, Y, m, n - 1));
+        return dp[m][n] = 1 + min(scs(X, Y, m - 1, n), scs(X, Y, m, n - 1));
     }
 
     int shortestCommonSupersequence(string X, string Y, int m, int n)
@@ -48,7 +48,7 @@ public:
                 else
                     dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1]);
 
-        // lcs(X,Y,m,n);
+        // scs(X,Y,m,n);
         return dp[m][n];
     }
 };
