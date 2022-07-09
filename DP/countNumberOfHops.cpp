@@ -26,34 +26,15 @@ public:
     }
     long long countWays(int n)
     {
-
         // your code here
-        int x = 1;
-        int y = 2;
-        int z = 3;
-        int ans[n + 1] = {0};
-        ans[1] = 1;
-        ans[2] = 1;
-        ans[3] = 1;
+        int ways[100000 + 1];
+        ways[1] = 1;
+        ways[2] = 2;
+        ways[3] = 4;
+        for (int i = 4; i <= 100001; i++)
+            ways[i] = (((ways[i - 1] + ways[i - 2]) % mod) + ways[i - 3]) % mod;
 
-        for (int i = 1; i <= n; i++)
-        {
-            long long val1 = 0;
-            long long val2 = 0;
-            long long val3 = 0;
-
-            if (i - x >= 0)
-                val1 = ans[i - x];
-
-            if (i - y >= 0)
-                val2 = ans[i - y];
-
-            if (i - z >= 0)
-                val3 = ans[i - z];
-
-            ans[i] += (val1 + val2 + val3) % mod;
-        }
-        return ans[n] % mod;
+        return ways[n];
     }
 };
 
