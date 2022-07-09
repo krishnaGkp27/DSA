@@ -14,7 +14,7 @@ private:
     vector<int> ans;
 
 public:
-    void coins(int N, int n)
+    void minCoinCount(int N, int n)
     {
         if (N == 0 || n == 0)
             return;
@@ -22,16 +22,16 @@ public:
         if (N - arr[n] >= 0)
         {
             ans.push_back(arr[n]);
-            coins(N - arr[n], n);
+            minCoinCount(N - arr[n], n);
         }
         else
-            coins(N, n - 1);
+            minCoinCount(N, n - 1);
     }
     vector<int> minPartition(int N)
     {
         // code here
         ans.clear();
-        coins(N, 10);
+        minCoinCount(N, 10);
         return ans;
     }
 };
