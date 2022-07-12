@@ -8,7 +8,6 @@ class Solution
 private:
 #define INF 0x3f3f3f3f;
     int ans = -INF;
-    vector<long long> dp;
 
 public:
     // arr: input array
@@ -17,7 +16,7 @@ public:
     long long maxSubarraySum(int arr[], int n)
     {
 
-        dp.resize(n + 1);
+        vector<long long> dp(n + 1);
         dp[1] = arr[0];
         long long maxSum = arr[0];
 
