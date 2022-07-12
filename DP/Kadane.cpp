@@ -16,17 +16,15 @@ public:
     // Function to find the sum of contiguous subarray with maximum sum.
     long long maxSubarraySum(int arr[], int n)
     {
-        long long previousSum = -INF;
-        long long maxSum = -INF;
 
-        for (int i = 1; i <= n; i++)
+        dp.resize(n + 1);
+        dp[1] = arr[0];
+        long long maxSum = arr[0];
+
+        for (int i = 2; i <= n; i++)
         {
-            if (previousSum < 0)
-                previousSum = arr[i - 1];
-            else
-                previousSum += arr[i - 1];
-
-            maxSum = max(maxSum, previousSum);
+            dp[i] = max(dp[i - 1] + arr[i - 1], (long long)arr[i - 1]);
+            maxSum = max(maxSum, dp[i]);
         }
         return maxSum;
     }
