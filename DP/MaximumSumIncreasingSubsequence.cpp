@@ -7,7 +7,7 @@ class Solution
 {
 
 private:
-    int N;
+    int arraySize;
     int **dp;
 
 public:
@@ -21,7 +21,7 @@ public:
 
         int exclusion = checkSumSub(arr, n - 1, preIdx);
 
-        if (preIdx == N || arr[n - 1] < arr[preIdx])
+        if (preIdx == arraySize || arr[n - 1] < arr[preIdx])
         {
             int inclusion = arr[n - 1] + checkSumSub(arr, n - 1, n - 1);
             return dp[n][preIdx] = max(inclusion, exclusion);
@@ -38,7 +38,7 @@ public:
             dp[i] = new int[n + 1];
 
         this->dp = dp;
-        this->N = n;
+        this->arraySize = n;
 
         for (int i = 0; i <= n; i++)
             for (int j = 0; j <= n; j++)
