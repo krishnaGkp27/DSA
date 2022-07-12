@@ -27,11 +27,11 @@ public:
     long long countWays(int n)
     {
         // your code here
-        int ways[100000 + 1];
+        int ways[n + 1];
         ways[1] = 1;
         ways[2] = 2;
         ways[3] = 4;
-        for (int i = 4; i <= 100001; i++)
+        for (int i = 4; i <= n; i++)
             ways[i] = (((ways[i - 1] + ways[i - 2]) % mod) + ways[i - 3]) % mod;
 
         return ways[n];
