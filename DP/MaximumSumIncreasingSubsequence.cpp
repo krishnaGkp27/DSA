@@ -19,15 +19,15 @@ public:
         if (dp[n][preIdx] != -1)
             return dp[n][preIdx];
 
-        else if (preIdx == N || arr[n - 1] < arr[preIdx])
+        int exclusion = checkSumSub(arr, n - 1, preIdx);
+
+        if (preIdx == N || arr[n - 1] < arr[preIdx])
         {
             int inclusion = arr[n - 1] + checkSumSub(arr, n - 1, n - 1);
-            int exclusion = checkSumSub(arr, n - 1, preIdx);
             return dp[n][preIdx] = max(inclusion, exclusion);
         }
-
         else
-            return dp[n][preIdx] = checkSumSub(arr, n - 1, preIdx);
+            return dp[n][preIdx] = exclusion;
     }
 
     int maxSumIS(int arr[], int n)
