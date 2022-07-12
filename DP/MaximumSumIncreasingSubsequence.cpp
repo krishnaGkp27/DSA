@@ -5,7 +5,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution
 {
-
+#define INF 0x3f3f3f3f
 private:
     int arraySize;
     int **dp;
@@ -20,14 +20,12 @@ public:
             return dp[n][preIdx];
 
         int exclusion = checkSumSub(arr, n - 1, preIdx);
+        int inclusion = -INF;
 
         if (preIdx == arraySize || arr[n - 1] < arr[preIdx])
-        {
-            int inclusion = arr[n - 1] + checkSumSub(arr, n - 1, n - 1);
-            return dp[n][preIdx] = max(inclusion, exclusion);
-        }
-        else
-            return dp[n][preIdx] = exclusion;
+            inclusion = arr[n - 1] + checkSumSub(arr, n - 1, n - 1);
+
+        dp[n][preIdx] = max(inclusion, exclusion);
     }
 
     int maxSumIS(int arr[], int n)
