@@ -33,21 +33,19 @@ public:
     int maxSumIS(int arr[], int n)
     {
         // Your code goes here
-        int **dp;
-        dp = new int *[n + 1];
-        for (int i = 0; i < n + 1; i++)
+        int **dp = new int *[n + 1];
+        for (int i = 0; i <= n; i++)
             dp[i] = new int[n + 1];
 
         this->dp = dp;
         this->N = n;
 
-        for (int i = 0; i < n + 1; i++)
-            for (int j = 0; j < n + 1; j++)
+        for (int i = 0; i <= n; i++)
+            for (int j = 0; j <= n; j++)
                 dp[i][j] = -1;
 
-        int preIdx = n;
-        checkSumSub(arr, n, preIdx);
-        return this->dp[n][preIdx];
+        checkSumSub(arr, n, n);
+        return this->dp[n][n];
         /*int dp[n+1];
         dp[0] = 0;
         int maxSum = arr[0];
