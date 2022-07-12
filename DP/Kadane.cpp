@@ -6,8 +6,7 @@ using namespace std;
 class Solution
 {
 private:
-#define INF 0x3f3f3f3f;
-    int ans = -INF;
+#define INF 1e18;
 
 public:
     // arr: input array
@@ -17,10 +16,10 @@ public:
     {
 
         vector<long long> dp(n + 1);
-        dp[1] = arr[0];
-        long long maxSum = arr[0];
+        dp[0] = 0;
+        long long maxSum = -INF;
 
-        for (int i = 2; i <= n; i++)
+        for (int i = 1; i <= n; i++)
         {
             dp[i] = max(dp[i - 1] + arr[i - 1], (long long)arr[i - 1]);
             maxSum = max(maxSum, dp[i]);
