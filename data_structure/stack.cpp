@@ -5,9 +5,10 @@ class iStack
 
 private:
     int pointer;
+    const static int capacity = 2;
 
 public:
-    int ar[2];
+    int ar[capacity];
 
     iStack()
     {
@@ -16,7 +17,7 @@ public:
 
     void push(int val)
     {
-        if (pointer + 1 > 1)
+        if (pointer + 2 > capacity)
             cout << "Stack overflow" << endl;
         else
         {
@@ -28,7 +29,7 @@ public:
     void pop()
     {
         if (pointer < 0)
-            cout << "Stack underflow";
+            cout << "Stack underflow" << endl;
         else
             pointer--;
     }
@@ -46,8 +47,8 @@ public:
     {
         if (pointer == -1)
             return true;
-        else
-            return false;
+
+        return false;
     }
 
     int size()
@@ -59,23 +60,23 @@ public:
 int main()
 {
     iStack st;
-    st.push(10);
-    st.push(20);
-    st.push(30);
+    // st.push(10);
+    // st.push(20);
+    // st.push(30);
 
-    cout << st.top() << endl;
-    cout << st.empty() << endl;
-    cout << st.size() << endl;
-
-    st.pop();
-
-    cout << st.top() << endl;
-    cout << st.empty() << endl;
-    cout << st.size() << endl;
+    // cout << st.top() << endl;
+    // cout << st.empty() << endl;
+    // cout << st.size() << endl;
 
     st.pop();
 
-    cout << st.top() << endl;
-    cout << st.empty() << endl;
-    cout << st.size();
+    // cout << st.top() << endl;
+    // cout << st.empty() << endl;
+    // cout << st.size() << endl;
+
+    st.pop();
+
+    // cout << st.top() << endl;
+    // cout << st.empty() << endl;
+    // cout << st.size();
 }
