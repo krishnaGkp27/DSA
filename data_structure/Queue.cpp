@@ -3,8 +3,8 @@ using namespace std;
 
 class iQueue
 {
-private:
-    int q[5];
+    const static int capacity = 5;
+    int q[capacity];
     int front_pointer;
     int back_pointer;
 
@@ -35,9 +35,9 @@ public:
         else
             return q[back_pointer++];
     }
-    void insert(int val)
+    void push(int val)
     {
-        if (front_pointer + 1 >= 5)
+        if (front_pointer + 1 >= capacity)
             cout << "Queue overflow";
 
         else if (front_pointer == -1)
@@ -56,7 +56,7 @@ public:
     {
         cout << endl
              << "[ ";
-        for (int i = back_pointer; i <= front_pointer && i > -1 && i < 5; i++)
+        for (int i = back_pointer; i <= front_pointer && i > -1 && i < capacity; i++)
             cout << "\"" << q[i] << "\""
                  << " ";
         cout << " ]" << endl;
@@ -67,12 +67,12 @@ int main()
 {
     iQueue q;
 
-    q.insert(10);
-    q.insert(34);
-    q.insert(65);
-    q.insert(134);
-    q.insert(16);
-    q.insert(16);
+    q.push(10);
+    q.push(34);
+    q.push(65);
+    q.push(134);
+    q.push(16);
+    q.push(16);
 
     cout << endl
          << q.front() << endl;
