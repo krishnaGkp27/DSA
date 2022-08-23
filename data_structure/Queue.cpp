@@ -24,16 +24,13 @@ public:
         }
         return q[back_pointer];
     }
-    int pop()
+    void pop()
     {
         print();
         if (back_pointer == -1 || back_pointer > front_pointer)
-        {
             cout << "Queue underflow";
-            return -1;
-        }
         else
-            return q[back_pointer++];
+            back_pointer++;
     }
     void push(int val)
     {
