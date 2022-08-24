@@ -4,6 +4,7 @@ using namespace std;
 class iQueue
 {
     const static int capacity = 5;
+    const int offsetIndex = -1;
     int q[capacity];
     int back_pointer;
     int front_pointer;
@@ -11,23 +12,23 @@ class iQueue
 public:
     iQueue()
     {
-        back_pointer = -1;
-        front_pointer = -1;
+        back_pointer = offsetIndex;
+        front_pointer = offsetIndex;
     }
     int front()
     {
         print();
-        if (front_pointer == -1 || front_pointer > back_pointer)
+        if (front_pointer == offsetIndex || front_pointer > back_pointer)
         {
             cout << "No element present inside queue";
-            return -1;
+            return offsetIndex;
         }
         return q[front_pointer];
     }
     void pop()
     {
         print();
-        if (front_pointer == -1 || front_pointer > back_pointer)
+        if (front_pointer == offsetIndex || front_pointer > back_pointer)
             cout << "Queue underflow";
         else
             front_pointer++;
@@ -37,7 +38,7 @@ public:
         if (back_pointer + 1 >= capacity)
             cout << "Queue overflow";
 
-        else if (back_pointer == -1)
+        else if (back_pointer == offsetIndex)
         {
 
             front_pointer++;
@@ -55,7 +56,7 @@ public:
     {
         cout << endl
              << "[ ";
-        for (int i = front_pointer; i <= back_pointer && i > -1 && i < capacity; i++)
+        for (int i = front_pointer; i <= back_pointer && i > offsetIndex && i < capacity; i++)
             cout << "\"" << q[i] << "\""
                  << " ";
         cout << " ]" << endl;
