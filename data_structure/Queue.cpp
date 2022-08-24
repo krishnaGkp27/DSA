@@ -5,55 +5,57 @@ class iQueue
 {
     const static int capacity = 5;
     int q[capacity];
-    int front_pointer;
     int back_pointer;
+    int front_pointer;
 
 public:
     iQueue()
     {
-        front_pointer = -1;
         back_pointer = -1;
+        front_pointer = -1;
     }
     int front()
     {
         print();
-        if (back_pointer == -1 || back_pointer > front_pointer)
+        if (front_pointer == -1 || front_pointer > back_pointer)
         {
             cout << "No element present inside queue";
             return -1;
         }
-        return q[back_pointer];
+        return q[front_pointer];
     }
     void pop()
     {
         print();
-        if (back_pointer == -1 || back_pointer > front_pointer)
+        if (front_pointer == -1 || front_pointer > back_pointer)
             cout << "Queue underflow";
         else
-            back_pointer++;
+            front_pointer++;
     }
     void push(int val)
     {
-        if (front_pointer + 1 >= capacity)
+        if (back_pointer + 1 >= capacity)
             cout << "Queue overflow";
 
-        else if (front_pointer == -1)
+        else if (back_pointer == -1)
         {
 
-            back_pointer++;
             front_pointer++;
-            q[front_pointer] = val;
+            back_pointer++;
+            q[back_pointer] = val;
         }
         else
-            q[++front_pointer] = val;
-
+        {
+            back_pointer++;
+            q[back_pointer] = val;
+        }
         print();
     }
     void print()
     {
         cout << endl
              << "[ ";
-        for (int i = back_pointer; i <= front_pointer && i > -1 && i < capacity; i++)
+        for (int i = front_pointer; i <= back_pointer && i > -1 && i < capacity; i++)
             cout << "\"" << q[i] << "\""
                  << " ";
         cout << " ]" << endl;
