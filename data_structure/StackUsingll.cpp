@@ -37,7 +37,13 @@ public:
     void pushBack(int val)
     {
         Node *temp = new Node(val);
-        tail->next = temp;
+        if (tail != NULL)
+            tail->next = temp;
+        else
+        {
+            tail = temp;
+            head = temp;
+        }
         len++;
     }
     void popFront()
