@@ -17,7 +17,7 @@ public:
 
     void push(int val)
     {
-        if (pointer + 2 > capacity)
+        if (pointer + 2 > CAPACITY)
             cout << "Stack overflow" << endl;
         else
         {
