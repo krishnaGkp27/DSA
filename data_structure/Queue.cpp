@@ -3,7 +3,7 @@ using namespace std;
 
 class iQueue
 {
-    const static int capacity = 5;
+    const static int CAPACITY = 5;
     const int offsetIndex = -1;
     int q[CAPACITY];
     int back_pointer;
