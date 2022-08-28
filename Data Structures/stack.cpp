@@ -8,7 +8,7 @@ private:
     const static int CAPACITY = 2;
 
 public:
-    int ar[capacity];
+    int ar[CAPACITY];
 
     iStack()
     {
