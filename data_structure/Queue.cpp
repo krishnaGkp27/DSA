@@ -5,7 +5,7 @@ class iQueue
 {
     const static int capacity = 5;
     const int offsetIndex = -1;
-    int q[capacity];
+    int q[CAPACITY];
     int back_pointer;
     int front_pointer;
 
