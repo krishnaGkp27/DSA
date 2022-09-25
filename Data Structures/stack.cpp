@@ -5,10 +5,10 @@ class iStack
 
 private:
     int pointer;
-    const static int capacity = 2;
+    const static int CAPACITY = 2;
 
 public:
-    int ar[capacity];
+    int ar[CAPACITY];
 
     iStack()
     {
@@ -17,7 +17,7 @@ public:
 
     void push(int val)
     {
-        if (pointer + 2 > capacity)
+        if (pointer + 2 > CAPACITY)
             cout << "Stack overflow" << endl;
         else
         {
