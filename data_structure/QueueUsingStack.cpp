@@ -109,29 +109,94 @@ public:
         return list.size();
     }
 };
-
+class iQueue
+{
+public:
+    iStack st;
+    bool isPush;
+    iQueue()
+    {
+        isPush = true;
+    }
+    void reverse()
+    {
+        iStack st_temp;
+        while (!st.empty())
+        {
+            st_temp.push(st.top());
+            st.pop();
+        }
+        st = st_temp;
+    }
+    void push(int val)
+    {
+        if (isPush)
+            st.push(val);
+        else
+        {
+            reverse();
+            st.push(val);
+            isPush = true;
+        }
+    }
+    void pop()
+    {
+        if (!isPush)
+            st.pop();
+        else
+        {
+            reverse();
+            st.pop();
+            isPush = false;
+        }
+    }
+    bool isEmpty()
+    {
+        return st.size() == 0;
+    }
+    int size()
+    {
+        return st.size();
+    }
+    int front()
+    {
+        if (isPush)
+        {
+            reverse();
+            isPush = false;
+        }
+        return st.top();
+    }
+};
 int main()
 {
-    iStack st;
-    st.push(10);
-    st.push(20);
-    st.push(30);
+    iQueue q;
+    q.push(10);
+    q.push(20);
+    q.push(30);
 
-    cout << st.top() << endl;
-    cout << st.empty() << endl;
-    cout << st.size() << endl;
+    cout << q.front() << endl;
+    cout << q.isEmpty() << endl;
+    cout << q.size() << endl;
 
-    st.pop();
+    q.pop();
 
-    cout << st.top() << endl;
-    cout << st.empty() << endl;
-    cout << st.size() << endl;
+    q.push(16);
+    q.push(27);
+    q.push(33);
+    q.pop();
+    q.pop();
+    q.pop();
 
-    st.pop();
-    st.pop();
-    st.pop();
+    cout << q.front() << endl;
+    cout << q.isEmpty() << endl;
+    cout << q.size() << endl;
 
-    cout << st.top() << endl;
-    cout << st.empty() << endl;
-    cout << st.size();
+    q.pop();
+    q.pop();
+    q.pop();
+
+    cout << q.front() << endl;
+    cout << q.isEmpty() << endl;
+    cout << q.size();
 }

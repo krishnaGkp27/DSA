@@ -5,6 +5,11 @@ using namespace std;
 // } Driver Code Ends
 
 // Function to find the maximum possible amount of money we can win.
+// 1. Push this one
+// 2. Rearrange max(min()) with base conditions on diagnol (recursively) (case1, case2)
+// 3. Tabulate part 2
+// 4. Submit on Leetcode using even length optimization (https://leetcode.com/problems/predict-the-winner/)
+// 5. Discuss approach using sum
 class Solution
 {
 #include <unordered_map>

@@ -3,9 +3,9 @@ using namespace std;
 
 class iQueue
 {
-    const static int capacity = 5;
+    const static int CAPACITY = 5;
     const int offsetIndex = -1;
-    int q[capacity];
+    int q[CAPACITY];
     int back_pointer;
     int front_pointer;
 
@@ -35,7 +35,7 @@ public:
     }
     void push(int val)
     {
-        if (back_pointer + 1 >= capacity)
+        if (back_pointer + 1 >= CAPACITY)
             cout << "Queue overflow";
 
         else if (back_pointer == offsetIndex)
@@ -56,7 +56,7 @@ public:
     {
         cout << endl
              << "[ ";
-        for (int i = front_pointer; i <= back_pointer && i > offsetIndex && i < capacity; i++)
+        for (int i = front_pointer; i <= back_pointer && i > offsetIndex && i < CAPACITY; i++)
             cout << "\"" << q[i] << "\""
                  << " ";
         cout << " ]" << endl;

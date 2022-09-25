@@ -109,29 +109,97 @@ public:
         return list.size();
     }
 };
+class iStack
+{
+public:
+    iQueue q;
+    void push(int val)
+    {
+        q.push(val);
+    }
+    void pop()
+    {
+        remove_last();
+    }
+    int top()
+    {
+        if (q.isEmpty())
+        {
+            cout << "Stack is empty";
+            return -1;
+        }
+        int last_value = remove_last();
+        q.push(last_value);
+        return last_value;
+    }
+    bool empty()
+    {
+        return q.size();
+    }
+    int size()
+    {
+        return q.size();
+    }
+    int remove_last()
+    {
+        int last_element = -1;
+        // if (q.size() == 1)
+        // {
+        //     last_element = q.front();
+        //     q.pop();
+        //     return last_element;
+        // }
+
+        iQueue q2;
+        while (q.size() > 1)
+        {
+            q2.push(q.front());
+            q.pop();
+        }
+        if (!q.isEmpty())
+        {
+            last_element = q.front();
+            q.pop();
+            cout << "isNotEmpty" << endl;
+        }
+        // while (!q2.isEmpty())
+        // {
+        //     q.push(q2.front());
+        //     q2.pop();
+        // }
+        q = q2;
+        return last_element;
+    }
+};
 int main()
 {
-    iQueue q;
-    q.push(10);
-    q.push(20);
-    q.push(30);
-    q.pop();
+    iStack st;
+    st.push(10);
+    cout << st.top() << endl;
+    cout << st.size() << endl;
+    st.push(20);
+    cout << st.top() << endl;
+    cout << st.size() << endl;
+    st.push(30);
+    cout << st.top() << endl;
+    cout << st.size() << endl;
 
-    cout << q.front() << endl;
-    cout << q.isEmpty() << endl;
-    cout << q.size() << endl;
+    // cout << st.top() << endl;
+    // cout << st.size() << endl;
+    // cout << st.empty() << endl;
+    // cout << st.size() << endl;
 
-    // q.pop();
+    // st.pop();
 
-    // cout << q.front() << endl;
-    // cout << q.isEmpty() << endl;
-    // cout << q.size() << endl;
+    // cout << st.top() << endl;
+    // cout << st.empty() << endl;
+    // cout << st.size() << endl;
 
-    // q.pop();
-    // q.pop();
-    // q.pop();
+    // st.pop();
+    // st.pop();
+    // st.pop();
 
-    // cout << q.front() << endl;
-    // cout << q.isEmpty() << endl;
-    // cout << q.size();
+    // cout << st.top() << endl;
+    // cout << st.empty() << endl;
+    // cout << st.size();
 }
