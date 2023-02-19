@@ -17,8 +17,8 @@ class Trie{
 
         void insert(string s){
             Trie *node = this;
-            for(int i = 0; i < s.size(); i++){
-                int index = s[i] - 'a';
+            for(char ch : s){
+                int index = ch-'a';
                 if(!node->child[index])
                     node->child[index] = new Trie();
                 node = node->child[index];
@@ -28,8 +28,8 @@ class Trie{
         
         bool search(string s){
             Trie *node = this;
-            for(int i = 0; i < s.size(); i++){
-                int index = s[i]-'a';
+            for(char ch : s){
+                int index = ch-'a';
                 if(!node->child[index])
                     return false;
                 node = node->child[index];     
